@@ -42,7 +42,8 @@
           <tr>
             <td>
               <%= link_to user_path(book_comment.user) do %>
-              <%= attachment_image_tag(book_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+              <%= attachment_image_tag(book_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %><br>
+              <%= book_comment.user.name %>
               <% end %>
             </td>
             <td>
@@ -57,7 +58,7 @@
         <% end %>
       </table>
       <div>
-        
+
         <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
           <%= f.text_area :comment, class: "form-control comment" %>
           <%= f.submit "送信" %>

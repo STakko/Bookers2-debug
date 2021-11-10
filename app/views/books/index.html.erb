@@ -17,10 +17,13 @@
       <%= render 'form', book: Book.new %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <%= form_with url: books_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search %>
-        <%= f.select :title, :name, [[""]]
-        <%= f.submit '検索', name: nil %>
+      <% if user_signed_in? %>
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <%= f.text_field 'search[value]' %>
+          <%= f.select 'search[model]', options_for_select({"User" => "user", "Book" => "book"}) %>
+          <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical" }) %>
+          <%= f.submit '検索' %>
+        <% end %>
       <% end %>
       <h2>Books</h2>
       <%= render 'index', books: @books%>

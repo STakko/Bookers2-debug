@@ -28,4 +28,18 @@
   <% else %>
       <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
   <% end %>
+  
+  <% if user.id == current_user.id %>
+  <% else %>
+    <% if @isRoom == true %>
+      <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+    <% else %>
+      <%= form_with model:@room, local:true do |f| %>
+        <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> user.id %>
+        <% end %>
+      <%= f.submit "チャットを始める" %>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>

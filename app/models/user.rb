@@ -13,6 +13,8 @@ class User < ApplicationRecord
                                                                   #following_user:中間テーブルを通してfollowedモデルのフォローされる側を取得すること
   has_many :follower_user, through: :followed, source: :follower  #自分をフォローしている人（誰かにフォローされた自分から中間テーブルを通して、フォローしてきた人を取得する）
                                                                   #follower_user:中間テーブルを通してfollowerモデルのフォローする側を取得すること
+  has_many :favorited_books, through: :favorites, source: :book
+  
   attachment :profile_image, destroy: false
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true

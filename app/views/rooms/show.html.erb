@@ -1,18 +1,27 @@
-<% @entries.each do |e| %>
-  <h2><%= e.user.id %>さんとのチャット</h2>
-<% end %>
+ <% @RoomUsers.each do |r| %>
+       <h2><%= r.user.name %></h2>
+ <% end %>
+ <div class="chats">
+   <div class="chat">
+     <% if @messages.present? %>
+       <% @messages.each do |m| %>
+         <div class="chat-box">
+           <div class="chat-text">
+             <%= m.content %>
+           </div>
+         </div>
+       <% end %>
+       <%else%>
+         <p>メッセージはまだありません</p>
+     <% end %>
+   </div>
+   <div class="posts">
+     <%= form_with model: @message, local: true do |f| %>
+       <%= f.text_field :content %>
+       <%= f.hidden_field :room_id, value: @room.id %>
+       <%= f.submit "送信する" %>
+     <% end %>
+   </div>
 
-<% if @messages.present? %>
-  <% @messages.each do |m| %>
-    <strong><%= m.content %></strong>
-    <small>by<%= m.user_id %>さん</small>
-    <hr>
-  <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
-<%= form_with model:@message, local:true do |f| %>
-  <%= f.text_field :content, :size => 140 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <%= f.submit "投稿する" %>
-<% end %>
+ </div>
+</div>

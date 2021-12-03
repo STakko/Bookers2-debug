@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :favorited_books, through: :favorites, source: :book
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries
   
   attachment :profile_image, destroy: false
 

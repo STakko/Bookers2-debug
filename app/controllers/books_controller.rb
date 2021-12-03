@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     @book_comment = BookComment.new
     @currentRoomUser = Entry.where(user_id: current_user.id)  #current_userが既にルームに参加しているか判断
     @receiveUser = Entry.where(user_id: @book.user.id)  #他の@userがルームに参加しているか判断
-    
+
     unless @book.user.id == current_user.id  #current_userと@book.userが一致していなければ
       @currentRoomUser.each do |cu|    #current_userが参加していルームを取り出す
         @receiveUser.each do |u|    #@userが参加しているルームを取り出す
@@ -22,6 +22,10 @@ class BooksController < ApplicationController
         @RoomUser = Entry.new
         #//新しいインスタンスを生成
       end
+    end
+    @book_detail = Book.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book_detail.id)
+      current_user.view_counts.create(book_id: @book_detail.id)
     end
   end
 

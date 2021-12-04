@@ -53,8 +53,9 @@ class UsersController < ApplicationController
   end
 
   def day_search
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])#なぜ:idではなく:user_idなのか？
     @books = @user.books
+    @book = Book.new
     if params[:created_at] == ""#空欄の場合、下の文章を表示する
       @search_book = "日付を指定して下さい"
     else

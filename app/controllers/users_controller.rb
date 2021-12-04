@@ -52,6 +52,17 @@ class UsersController < ApplicationController
     @users = @user.follower_user
   end
 
+  def day_search
+    @user = User.find(params[:id])
+    @books = @user.books
+    if params[:created_at] == ""#空欄の場合、下の文章を表示する
+      @search_book = "日付を指定して下さい"
+    else
+      created_at = params[:created_at]
+      @search_book = @books.where(['created_at LIKE ?', "#{created_at}%"]).count #whereでヒットした投稿をカウントする
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)

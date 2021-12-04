@@ -70,3 +70,4 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'jquery-rails'
 gem 'groupdate'
 gem 'chart-js-rails', '~> 0.1.4'
+gem "chartkick"

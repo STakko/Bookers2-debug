@@ -76,6 +76,7 @@ GEM
       xpath (~> 3.2)
     chart-js-rails (0.1.7)
       railties (> 3.1)
+    chartkick (4.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -287,6 +288,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chart-js-rails (~> 0.1.4)
+  chartkick
   coffee-rails (~> 4.2)
   devise
   factory_bot_rails

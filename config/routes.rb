@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'book_charts/index'
   root to: 'homes#top'
   devise_for :users
   get 'home/about' => 'homes#about'

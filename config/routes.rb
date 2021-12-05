@@ -16,8 +16,10 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
-  
-  resources :groups, only: [:index, :show, :edit, :create, :update, :new, :show]
+
+  resources :groups do
+    get "join" => "groups#join"
+  end
 
   get '/search' => 'searches#search'
 

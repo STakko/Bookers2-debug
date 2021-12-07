@@ -26,6 +26,11 @@
         <% end %>
       <% end %>
       <h2>Books</h2>
+      <%= link_to '新しい順', books_path(sort_create: "true") %>
+      |
+      <%= link_to '評価の高い順', books_path(sort_rate: "true") %>
+      |
+      <%= link_to 'いいねが多い順', books_path(sort_favorite: "true") %>
       <%= render 'index', books: @books%>
     </div>
   </div>

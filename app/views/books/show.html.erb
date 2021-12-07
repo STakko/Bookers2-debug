@@ -30,6 +30,22 @@
           <td>
             <p class="view-count">閲覧数:<%= @book_detail.view_counts.count %></p>
           </td>
+          <td>
+            <div class="relative-book-rate">
+              <span id="star-rate-<%= @book.id %>"></span>
+              <script>
+                $('#star-rate-<%= @book.id %>').raty({
+                  size    : 36,
+                  starOff : "<%= asset_path('star-off.png') %>",
+                  starOn  : "<%= asset_path('star-on.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  half: true,
+                  readOnly: true,
+                  score: <%= @book.rate %>,
+                });
+              </script>
+            </div>
+          </td>
         </tr>
       </table>
       <div class="comments">

@@ -12,6 +12,21 @@
         <%= f.label :opinion %>
         <%= f.text_area :body, class: 'form-control book_body' %>
       </div>
+      <div class="relative-book-rate">
+        <span id="star-rate-<%= @book.id %>"></span>
+        <script>
+          $('#star-rate-<%= @book.id %>').raty({
+            size    : 36,
+            starOff : "<%= asset_path('star-off.png') %>",
+            starOn  : "<%= asset_path('star-on.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            half: true,
+            readOnly: true,
+            score: <%= @book.rate %>,
+          });
+        </script>
+      </div>
+      <br>
       <div class="form-group">
         <%= f.submit ' Update Book ', class: 'btn btn-success' %>
       </div>

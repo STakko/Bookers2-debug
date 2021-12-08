@@ -72,3 +72,4 @@ gem 'groupdate'
 gem 'chart-js-rails', '~> 0.1.4'
 gem "chartkick"
 gem 'dotenv-rails'
+gem 'ransack'

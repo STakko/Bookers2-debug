@@ -31,7 +31,11 @@
       <%= link_to '評価の高い順', books_path(sort_rate: "true") %>
       |
       <%= link_to 'いいねが多い順', books_path(sort_favorite: "true") %>
-      <%= render 'index', books: @books%>
+      <% if @search_books %>
+        <%= render 'index', books: @search_books %>
+      <% else %>
+        <%= render 'index', books: @books%>
+      <% end %>
     </div>
   </div>
 </div>
